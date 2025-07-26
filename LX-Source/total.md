@@ -44,12 +44,14 @@ https://raw.githubusercontent.com/kayee0212/lx-music-yinyuan/refs/heads/main/mob
 
 ## ~~聚合API+V3(by+lerd)~~
 
+<del>
 ```shell
 # https://raw.githubusercontent.com/kayee0212/lx-music-yinyuan/refs/heads/main/%E8%81%9A%E5%90%88API%2BV3(by%2Blerd).js
 ```
 
 ## ~~聚合音源~~
 
+<del>
 ```shell
 # http://raw.githubusercontent.com/kayee0212/lx-music-yinyuan/refs/heads/main/%E8%81%9A%E5%90%88%E9%9F%B3%E6%BA%90.js
 ```
