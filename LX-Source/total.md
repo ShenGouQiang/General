@@ -42,16 +42,16 @@ http://raw.githubusercontent.com/kayee0212/lx-music-yinyuan/refs/heads/main/lx-m
 https://raw.githubusercontent.com/kayee0212/lx-music-yinyuan/refs/heads/main/mobi-api.js
 ```
 
-## 聚合API+V3(by+lerd)
+## ~~聚合API+V3(by+lerd)~~
 
 ```
-https://raw.githubusercontent.com/kayee0212/lx-music-yinyuan/refs/heads/main/%E8%81%9A%E5%90%88API%2BV3(by%2Blerd).js
+# https://raw.githubusercontent.com/kayee0212/lx-music-yinyuan/refs/heads/main/%E8%81%9A%E5%90%88API%2BV3(by%2Blerd).js
 ```
 
-## 聚合音源
+## ~~聚合音源~~
 
 ```
-http://raw.githubusercontent.com/kayee0212/lx-music-yinyuan/refs/heads/main/%E8%81%9A%E5%90%88%E9%9F%B3%E6%BA%90.js
+# http://raw.githubusercontent.com/kayee0212/lx-music-yinyuan/refs/heads/main/%E8%81%9A%E5%90%88%E9%9F%B3%E6%BA%90.js
 ```
 
 ## 野花音源
