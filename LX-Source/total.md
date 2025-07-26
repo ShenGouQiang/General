@@ -1,5 +1,13 @@
 # 第一部分
 
+## 自建
+
+```
+https://raw.githubusercontent.com/ShenGouQiang/General/refs/heads/main/LX-Source/owner/%E7%BD%91%E6%98%93%E4%BA%91%2B%E9%85%B7%E6%88%91.js
+```
+
+# 第二部分
+
 ```
 https://github.com/kayee0212/lx-music-yinyuan
 ```
@@ -58,7 +66,7 @@ https://raw.githubusercontent.com/kayee0212/lx-music-yinyuan/refs/heads/main/%E9
 http://raw.githubusercontent.com/kayee0212/lx-music-yinyuan/refs/heads/main/%E9%87%8E%E8%8D%89%E9%9F%B3%E6%BA%90.js
 ```
 
-# 第二部分
+# 第三部分
 
 ```
 https://github.com/pdone/lx-music-source
