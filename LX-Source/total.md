@@ -14,9 +14,9 @@ https://github.com/kayee0212/lx-music-yinyuan
 
 ## FreeListen+1.1.2(原小熊猫)
 
-```
+`
 https://raw.githubusercontent.com/kayee0212/lx-music-yinyuan/refs/heads/main/FreeListen%2B1.1.2(%E5%8E%9F%E5%B0%8F%E7%86%8A%E7%8C%AB).js
-```
+`
 
 ## Huibq_lxmusic源
 
