@@ -123,7 +123,8 @@
         },
         "jiujiure": {
             "api": "https://www.jiujiure00.com/api.php/Prodao/vod/?ac=list",
-            "name": "久久热资源"
+            "name": "久久热资源",
+            "detail": "www.jiujiure00.com/"
         },
         "155zy": {
             "api": "http://155zy.com/api.php/provide/vod",
@@ -163,7 +164,7 @@
         "aosikazy": {
             "api": "https://aosikazy.com/api.php/provide/vod",
             "name": "奥斯卡资源",
-            "detail": "https://aosikazy.com"
+            "detail": "https://aosikazy.com/"
         },
         "shandianzy": {
             "api": "https://xsd.sdzyapi.com/api.php/provide/vod/?ac=list",
