@@ -113,3 +113,9 @@ https://raw.githubusercontent.com/pdone/lx-music-source/main/ikun/latest.js
 ```
 https://raw.githubusercontent.com/pdone/lx-music-source/main/grass/latest.js
 ```
+
+## 野草
+
+```
+https://tt.tenmeng.com/moonue/js/yecao202412.js
+```
