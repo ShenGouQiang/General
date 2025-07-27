@@ -210,6 +210,86 @@
             "api": "https://jszyapi.com/api.php/provide/vod/from/jsyun/at/json",
             "name": "极速资源",
             "detail": "https://jisuzy.com/"
+        },
+        "bwzy": {
+            "api": "https://api.bwzyz.com/api.php/provide/vod/at/json/",
+            "name": "百万资源",
+            "detail": "https://bwzy.tv"
+        },
+        "thzy1": {
+            "api": "https://thzy1.me/api.php/provide/vod/?ac=list",
+            "name": "桃花资源",
+            "detail": "https://thzy1.me/"
+        },
+        "semaozy5": {
+            "api": "https://caiji.semaozy.net/inc/apijson_vod.php",
+            "name": "色猫资源",
+            "detail": "https://semaozy5.com/"
+        },
+        "shayuzy5": {
+            "api": "https://shayuapi.com/api.php/provide/vod/at/json/?ac=list",
+            "name": "鲨鱼资源",
+            "detail": "http://shayuzy5.com/"
+        },
+        "avre00": {
+            "api": "https://www.avre06.com/api.php/Prodao/vod/?ac=list",
+            "name": "黄瓜资源",
+            "detail": "https://avre00.com/"
+        },
+        "jkunzy": {
+            "api": "https://jkunzyapi.com/api.php/provide/vod",
+            "name": "JKUN",
+            "detail": "https://jkunzy.com/"
+        },
+        "ckzy": {
+            "api": "https://ckzy.me/api.php/provide/vod/?ac=list",
+            "name": "CK资源",
+            "detail": "https://ckzy1.com/"
+        },
+        "msnii": {
+            "api": "https://www.msnii.com/api/json.php",
+            "name": "美少女资源站",
+            "detail": "https://kdynaj.msn5.homes/cn/home/web/"
+        },
+        "xrbsp": {
+            "api": "https://www.xrbsp.com/api/json.php",
+            "name": "淫水机资源站",
+            "detail": "https://dkmtsi.ysj4.mom/cn/home/web/"
+        },
+        "gdlsp": {
+            "api": "https://www.gdlsp.com/api/json.php",
+            "name": "香奶儿资源站",
+            "detail": "https://eydvxu.xne5.online/cn/home/web/"
+        },
+        "kxgav": {
+            "api": "https://www.kxgav.com/api/json.php",
+            "name": "白嫖资源站",
+            "detail": "https://rekxoh.bp5.lol/cn/home/web/"
+        },
+        "afasu": {
+            "api": "https://www.afasu.com/api/json.php",
+            "name": "小湿妹资源站",
+            "detail": "https://kjkrss.xsm3.hair/cn/home/web/"
+        },
+        "pgxdy": {
+            "api": "https://www.pgxdy.com/api/json.php",
+            "name": "黄AV资源站",
+            "detail": "https://cixjuy.hav3.wiki/cn/home/web/"
+        },
+        "fhzy10": {
+            "api": "http://fhapi9.com/api.php/provide/vod/at/json/?ac=list",
+            "name": "番号资源",
+            "detail": "http://fhzy10.com/"
+        },
+        "caoliuzyw": {
+            "api": "https://www.caoliuzyw.com/api.php/provide/vod/at/json/",
+            "name": "草榴资源",
+            "detail": "https://caoliuzyw.com/"
+        },
+        "iqiyizyapi": {
+            "api": "https://iqiyizyapi.com/api.php/provide/vod",
+            "name": "爱奇艺资源",
+            "detail": "https://www.iqiyizy.com/"
         }
     }
 }
