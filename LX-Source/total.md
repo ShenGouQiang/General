@@ -123,5 +123,5 @@ https://tt.tenmeng.com/moonue/js/yecao202412.js
 ## 至尊源
 
 ```
-https://raw.githubusercontent.com/pdone/lx-music-source/main/lx/至尊源.js
+https://raw.githubusercontent.com/ShenGouQiang/General/refs/heads/main/LX-Source/owner/%E8%87%B3%E5%B0%8A%E6%BA%90.js
 ```
