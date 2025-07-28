@@ -119,3 +119,9 @@ https://raw.githubusercontent.com/pdone/lx-music-source/main/grass/latest.js
 ```
 https://tt.tenmeng.com/moonue/js/yecao202412.js
 ```
+
+## 至尊源
+
+```
+https://raw.githubusercontent.com/pdone/lx-music-source/main/lx/至尊源.js
+```
