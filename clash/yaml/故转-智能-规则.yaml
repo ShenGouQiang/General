@@ -36,6 +36,16 @@ proxy-providers:
       interval: 10
     proxy: 直连    
 
+  快冲云:
+    url: "http://192.168.123.241:3001/Jp8JmM1bQ4dqZBPHNYah/download/KuaiChongYun"
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 10
+    proxy: 直连    
+
 proxies:
   - {name: 直连, type: direct}
   - {name: 拒绝, type: reject}
