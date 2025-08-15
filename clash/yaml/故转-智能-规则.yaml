@@ -436,6 +436,7 @@ rules:
   - RULE-SET,direct_Domain,不走代理
   - RULE-SET,mustJapan_Domain,必须日本
   - RULE-SET,mustHongKong_Domain,必须香港
+  - RULE-SET,MyOwn_Gemini_Domain,Gemini
   - RULE-SET,Gemini_Domain,Gemini
   - RULE-SET,ai_Domain,AI
   - RULE-SET,MetaAi_Domain,AI
@@ -500,6 +501,7 @@ rule-providers:
   direct_Domain: {<<: *class, url: "https://raw.githubusercontent.com/ShenGouQiang/General/refs/heads/main/clash/rule/list/MyOwnDirect.list"}
   mustJapan_Domain: {<<: *class, url: "https://raw.githubusercontent.com/ShenGouQiang/General/refs/heads/main/clash/rule/list/MustJapan.list"}
   mustHongKong_Domain: {<<: *class, url: "https://raw.githubusercontent.com/ShenGouQiang/General/refs/heads/main/clash/rule/list/MustHongKong.list"}
+  MyOwn_Gemini_Domain: {<<: *class, url: "https://raw.githubusercontent.com/ShenGouQiang/General/refs/heads/main/clash/rule/list/MyOwn_Gemini.list"}
   Gemini_Domain: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Gemini.list"}
   ai_Domain: {<<: *class, url: "https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/AI.list"}
   MetaAi_Domain: {<<: *class, url: "https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/MetaAi.list"}
