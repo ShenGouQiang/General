@@ -114,30 +114,41 @@ default: &default
   type: select
   proxies:
     - 直连
-    - 所有-故转
-    - 所有-智选
-    - 所有-自动
     - 香港-故转
+    - 香港-自手
     - 香港-智选
     - 香港-自动
+    - 香港-手动
     - 台湾-故转
+    - 台湾-自手
     - 台湾-智选
     - 台湾-自动
+    - 台湾-手动
     - 日本-故转
+    - 日本-自手
     - 日本-智选
     - 日本-自动
+    - 日本-手动
     - 新加坡-故转
+    - 新加坡-自手
     - 新加坡-智选
     - 新加坡-自动
+    - 新加坡-手动
     - 韩国-故转
+    - 韩国-自手
     - 韩国-智选
     - 韩国-自动
+    - 韩国-手动
     - 美国-故转
+    - 美国-自手
     - 美国-智选
     - 美国-自动
+    - 美国-手动
     - 其他-故转
+    - 其他-自手
     - 其他-智选
     - 其他-自动
+    - 其他-手动
     - 拒绝
 
 proxy-groups:
@@ -169,37 +180,6 @@ proxy-groups:
   - {name: 国外, <<: *default}
   - {name: 其他, <<: *default}
 
-  # 所有组
-  - name: 所有-故转
-    type: fallback
-    interval: 10
-    lazy: false
-    proxies:
-      - 所有-智选
-      - 所有-自动
-
-  - name: 所有-智选
-    type: smart
-    include-all: true
-    policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8"
-    uselightgbm: true
-    collectdata: true
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 60
-      tolerance: 2
-    strategy: sticky-sessions
-    interval: 10
-    filter: "^((?!(直连|拒绝)).)*$"
-
-  - name: 所有-自动
-    type: url-test
-    include-all: true
-    tolerance: 10
-    interval: 10
-    filter: "^((?!(直连|拒绝)).)*$"
-
   # 香港组
   - name: 香港-故转
     type: fallback
@@ -207,18 +187,26 @@ proxy-groups:
     lazy: false
     proxies:
       - 香港-智选
+      - 香港-自手
+
+  - name: 香港-自手
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
       - 香港-自动
+      - 香港-手动
     
   - name: 香港-智选
     type: smart
     include-all: true
-    policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8"
+    policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8;快充云:0.6"
     uselightgbm: true
-    collectdata: true
+    collectdata: false
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
-      interval: 60
+      interval: 10
       tolerance: 2
     strategy: sticky-sessions
     interval: 10
@@ -231,6 +219,10 @@ proxy-groups:
     interval: 10
     filter: "(?:香港)"
  
+   - name: 香港-手动
+    type: select
+    filter: "(?:香港)"
+
   # 台湾组
   - name: 台湾-故转
     type: fallback
@@ -238,18 +230,26 @@ proxy-groups:
     lazy: false
     proxies:
       - 台湾-智选
+      - 台湾-自手
+
+  - name: 台湾-自手
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
       - 台湾-自动
+      - 台湾-手动
 
   - name: 台湾-智选
     type: smart
     include-all: true
-    policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8"
+    policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8;快充云:0.6"
     uselightgbm: true
-    collectdata: true
+    collectdata: false
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
-      interval: 60
+      interval: 10
       tolerance: 2
     strategy: sticky-sessions
     interval: 10
@@ -262,6 +262,10 @@ proxy-groups:
     interval: 10
     filter: "(?:台湾)"
 
+  - name: 台湾-手动
+    type: select
+    filter: "(?:台湾)"
+
   # 日本组
   - name: 日本-故转
     type: fallback
@@ -269,18 +273,26 @@ proxy-groups:
     lazy: false
     proxies:
       - 日本-智选
+      - 日本-自手
+
+  - name: 日本-自手
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
       - 日本-自动
+      - 日本-手动
 
   - name: 日本-智选
     type: smart
     include-all: true
-    policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8"
+    policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8;快充云:0.6"
     uselightgbm: true
-    collectdata: true
+    collectdata: false
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
-      interval: 60
+      interval: 10
       tolerance: 2
     strategy: sticky-sessions
     interval: 10
@@ -293,6 +305,10 @@ proxy-groups:
     interval: 10
     filter: "(?:日本)"
 
+  - name: 日本-手动
+    type: select
+    filter: "(?:日本)"
+
   # 新加坡组
   - name: 新加坡-故转
     type: fallback
@@ -300,18 +316,26 @@ proxy-groups:
     lazy: false
     proxies:
       - 新加坡-智选
+      - 新加坡-自手
+
+  - name: 新加坡-自手
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
       - 新加坡-自动
+      - 新加坡-手动
 
   - name: 新加坡-智选
     type: smart
     include-all: true
-    policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8"
+    policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8;快充云:0.6"
     uselightgbm: true
-    collectdata: true
+    collectdata: false
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
-      interval: 60
+      interval: 10
       tolerance: 2
     strategy: sticky-sessions
     interval: 10
@@ -324,6 +348,10 @@ proxy-groups:
     interval: 10
     filter: "(?:新加坡)"
 
+  - name: 新加坡-手动
+    type: select
+    filter: "(?:新加坡)"
+
   # 韩国组
   - name: 韩国-故转
     type: fallback
@@ -331,18 +359,26 @@ proxy-groups:
     lazy: false
     proxies:
       - 韩国-智选
+      - 韩国-自手
+
+  - name: 韩国-自手
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
       - 韩国-自动
+      - 韩国-手动
 
   - name: 韩国-智选
     type: smart
     include-all: true
-    policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8"
+    policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8;快充云:0.6"
     uselightgbm: true
-    collectdata: true
+    collectdata: false
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
-      interval: 60
+      interval: 10
       tolerance: 2
     strategy: sticky-sessions
     interval: 10
@@ -355,6 +391,10 @@ proxy-groups:
     interval: 10
     filter: "(?:韩国)"
 
+  - name: 韩国-手动
+    type: select
+    filter: "(?:韩国)"
+
   # 美国组
   - name: 美国-故转
     type: fallback
@@ -362,18 +402,26 @@ proxy-groups:
     lazy: false
     proxies:
       - 美国-智选
+      - 美国-自手
+
+  - name: 美国-自手
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
       - 美国-自动
+      - 美国-手动
 
   - name: 美国-智选
     type: smart
     include-all: true
-    policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8"
+    policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8;快充云:0.6"
     uselightgbm: true
-    collectdata: true
+    collectdata: false
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
-      interval: 60
+      interval: 10
       tolerance: 2
     strategy: sticky-sessions
     interval: 10
@@ -386,6 +434,10 @@ proxy-groups:
     interval: 10
     filter: "(?:美国)"
 
+  - name: 美国-手动
+    type: select
+    filter: "(?:美国)"
+
   # 其他组
   - name: 其他-故转
     type: fallback
@@ -393,29 +445,40 @@ proxy-groups:
     lazy: false
     proxies:
       - 其他-智选
+      - 其他-自手
+
+  - name: 其他-自手
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
       - 其他-自动
+      - 其他-手动
 
   - name: 其他-智选
     type: smart
     include-all: true
-    policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8"
+    policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8;快充云:0.6"
     uselightgbm: true
-    collectdata: true
+    collectdata: false
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
-      interval: 60
+      interval: 10
       tolerance: 2
     strategy: sticky-sessions
     interval: 10
     filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国)).*$"
-
 
   - name: 其他-自动
     type: url-test
     include-all: true
     tolerance: 10
     interval: 10
+    filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国)).*$"
+
+  - name: 其他-手动
+    type: select
     filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国)).*$"
 
 # ========================
