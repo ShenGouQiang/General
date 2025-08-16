@@ -36,6 +36,16 @@ proxy-providers:
       interval: 10
     proxy: 直连    
 
+  快冲云:
+    url: "http://192.168.123.241:3001/Jp8JmM1bQ4dqZBPHNYah/download/KuaiChongYun"
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 10
+    proxy: 直连    
+
 proxies:
   - {name: 直连, type: direct}
   - {name: 拒绝, type: reject}
@@ -170,7 +180,7 @@ proxy-groups:
     include-all: true
     tolerance: 10
     interval: 10
-    filter: "(?:香港)"
+    filter: "^(?!.*快冲云).*香港"
 
   - name: 香港-手动
     type: select
@@ -193,7 +203,7 @@ proxy-groups:
     include-all: true
     tolerance: 10
     interval: 10
-    filter: "(?:台湾)"
+    filter: "^(?!.*快冲云).*台湾"
 
   - name: 台湾-手动
     type: select
@@ -216,7 +226,7 @@ proxy-groups:
     include-all: true
     tolerance: 10
     interval: 10
-    filter: "(?:日本)"
+    filter: "^(?!.*快冲云).*日本"
 
   - name: 日本-手动
     type: select
@@ -239,7 +249,7 @@ proxy-groups:
     include-all: true
     tolerance: 10
     interval: 10
-    filter: "(?:新加坡)"
+    filter: "^(?!.*快冲云).*新加坡"
 
   - name: 新加坡-手动
     type: select
@@ -263,7 +273,7 @@ proxy-groups:
     include-all: true
     tolerance: 10
     interval: 10
-    filter: "(?:韩国)"
+    filter: "^(?!.*快冲云).*韩国"
 
   - name: 韩国-手动
     type: select
@@ -286,7 +296,7 @@ proxy-groups:
     include-all: true
     tolerance: 10
     interval: 10
-    filter: "(?:美国)"
+    filter: "^(?!.*快冲云).*美国"
 
   - name: 美国-手动
     type: select
@@ -309,7 +319,7 @@ proxy-groups:
     include-all: true
     tolerance: 10
     interval: 10
-    filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国)).*$"
+    filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国|快冲云)).*$"
 
   - name: 其他-手动
     type: select
