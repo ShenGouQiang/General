@@ -132,6 +132,9 @@ default: &default
     - 美国-故转
     - 美国-自动
     - 美国-手动
+    - 美国家宽-故转
+    - 美国家宽-自动
+    - 美国家宽-手动
     - 其他-故转
     - 其他-自动
     - 其他-手动
@@ -304,6 +307,29 @@ proxy-groups:
     tolerance: 10
     interval: 10
     filter: "(?:美国)"
+
+  # 美国家宽组
+  - name: 美国家宽-故转
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
+      - 美国家宽-自动
+      - 美国家宽-手动
+
+  - name: 美国家宽-自动
+    type: url-test
+    include-all: true
+    tolerance: 10
+    interval: 10
+    filter: "^(?=.*快冲云)(?=.*美国)(?=.*家宽).*"
+
+  - name: 美国家宽-手动
+    type: select
+    include-all: true
+    tolerance: 10
+    interval: 10
+    filter: "^(?=.*快冲云)(?=.*美国)(?=.*家宽).*"
 
   # 其他组
   - name: 其他-故转

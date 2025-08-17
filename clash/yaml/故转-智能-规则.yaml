@@ -144,6 +144,11 @@ default: &default
     - 美国-智选
     - 美国-自动
     - 美国-手动
+    - 美国家宽-故转
+    - 美国家宽-自手
+    - 美国家宽-智选
+    - 美国家宽-自动
+    - 美国家宽-手动
     - 其他-故转
     - 其他-自手
     - 其他-智选
@@ -455,7 +460,53 @@ proxy-groups:
       tolerance: 10
       interval: 10
       filter: "(?:美国)"
+
+    # 美国家宽组
+    - name: 美国家宽-故转
+      type: fallback
+      interval: 10
+      lazy: false
+      proxies:
+        - 美国家宽-智选
+        - 美国家宽-自手
   
+    - name: 美国家宽-自手
+      type: fallback
+      interval: 10
+      lazy: false
+      proxies:
+        - 美国家宽-自动
+        - 美国家宽-手动
+  
+    - name: 美国家宽-智选
+      type: smart
+      include-all: true
+      policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8;快充云:0.6"
+      uselightgbm: true
+      collectdata: false
+      health-check:
+        enable: true
+        url: https://www.gstatic.com/generate_204
+        interval: 10
+        tolerance: 2
+      strategy: sticky-sessions
+      interval: 10
+      filter: "^(?=.*快冲云)(?=.*美国)(?=.*家宽).*"
+  
+    - name: 美国家宽-自动
+      type: url-test
+      include-all: true
+      tolerance: 10
+      interval: 10
+      filter: "^(?=.*快冲云)(?=.*美国)(?=.*家宽).*"
+  
+    - name: 美国家宽-手动
+      type: select
+      include-all: true
+      tolerance: 10
+      interval: 10
+      filter: "^(?=.*快冲云)(?=.*美国)(?=.*家宽).*"
+
     # 其他组
     - name: 其他-故转
       type: fallback
