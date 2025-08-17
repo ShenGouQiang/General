@@ -125,6 +125,11 @@ manual_template: &manual_template
   tolerance: 10
   interval: 10
 
+fallback_template: &fallback_template
+  type: fallback
+  interval: 10
+  lazy: false
+
 # ========================
 # 策略组定义
 # ========================
@@ -189,9 +194,7 @@ proxy-groups:
 
   # 香港组
   - name: 香港-故转
-    type: fallback
-    interval: 10
-    lazy: false
+    <<: *fallback_template
     proxies:
       - 香港-自动
       - 香港-手动
@@ -207,9 +210,7 @@ proxy-groups:
  
   # 台湾组
   - name: 台湾-故转
-    type: fallback
-    interval: 10
-    lazy: false
+    <<: *fallback_template
     proxies:
       - 台湾-自动
       - 台湾-手动
@@ -225,9 +226,7 @@ proxy-groups:
 
   # 日本组
   - name: 日本-故转
-    type: fallback
-    interval: 10
-    lazy: false
+    <<: *fallback_template
     proxies:
       - 日本-自动
       - 日本-手动
@@ -243,9 +242,7 @@ proxy-groups:
 
   # 新加坡组
   - name: 新加坡-故转
-    type: fallback
-    interval: 10
-    lazy: false
+    <<: *fallback_template
     proxies:
       - 新加坡-自动
       - 新加坡-手动
@@ -262,9 +259,7 @@ proxy-groups:
 
   # 韩国组
   - name: 韩国-故转
-    type: fallback
-    interval: 10
-    lazy: false
+    <<: *fallback_template
     proxies:
       - 韩国-自动
       - 韩国-手动
@@ -280,9 +275,7 @@ proxy-groups:
 
   # 美国组
   - name: 美国-故转
-    type: fallback
-    interval: 10
-    lazy: false
+    <<: *fallback_template
     proxies:
       - 美国-自动
       - 美国-手动
@@ -297,9 +290,7 @@ proxy-groups:
 
   # 美国家宽组
   - name: 美国家宽-故转
-    type: fallback
-    interval: 10
-    lazy: false
+    <<: *fallback_template
     proxies:
       - 美国家宽-自动
       - 美国家宽-手动
@@ -314,9 +305,7 @@ proxy-groups:
 
   # 其他组
   - name: 其他-故转
-    type: fallback
-    interval: 10
-    lazy: false
+    <<: *fallback_template
     proxies:
       - 其他-自动
       - 其他-手动
