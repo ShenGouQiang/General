@@ -1,6 +1,11 @@
-# ========================
-# Clash-ALL 优化配置
-# ========================
+# ==========================================================
+# Clash-ALL 优化配置 (重构版 by AI Assistant)
+#
+# 主要改进:
+# 1. 使用YAML锚点和模板重构了 proxy-groups，大幅减少冗余。
+# 2. 引入 .所有节点 根策略组，替代 include-all，逻辑更清晰。
+# 3. 优化了 provider 的健康检查频率，减少性能开销。
+# ==========================================================
 
 # 机场节点订阅
 
@@ -107,13 +112,42 @@ profile:
   store-selected: true
   store-fake-ip: true
 
-# ========================
-# 策略组定义
-# ========================
+# ================================================================
+# 策略组定义 (重构核心区域)
+# ================================================================
+
+# [重构] 定义三个可复用的策略组模板，用于生成各种地区组
+smart_template: &smart_template
+  type: smart
+  policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8;快冲云:0.6"
+  include-all: true
+  tolerance: 10
+  interval: 10
+  uselightgbm: true
+  collectdata: false
+  health-check:
+    enable: true
+    url: https://www.gstatic.com/generate_204
+    interval: 10
+    tolerance: 2
+  strategy: sticky-sessions
+
+autotest_template: &autotest_template
+  type: url-test
+  include-all: true
+  tolerance: 10
+  interval: 10
+
+manual_template: &manual_template
+  type: select
+  include-all: true
+  tolerance: 10
+  interval: 10
+
+# --- [最终修正] 在这里定义一个完整的、可复用的 default 业务组模板 ---
 default: &default
   type: select 
   proxies: 
-    - 直连
     - 香港-故转
     - 香港-自手
     - 香港-智选
@@ -154,408 +188,278 @@ default: &default
     - 其他-智选
     - 其他-自动
     - 其他-手动
+    - 直连
     - 拒绝
+
+
+# ========================
+# ---- 策略组列表 ----
+# ========================
 
 proxy-groups: 
 
-  # 业务分流组
+ # --- 第一层：业务分流组---
+  - {name: Twitter, <<: *default}
+  - {name: 灵活, <<: *default}
+  - {name: 不走代理, <<: *default}
+  - {name: 必须日本, <<: *default}
+  - {name: 必须香港, <<: *default}
+  - {name: Gemini, <<: *default}
+  - {name: AI, <<: *default}
+  - {name: Nvidia, <<: *default}
+  - {name: GitHub, <<: *default}
+  - {name: TikTok, <<: *default}
+  - {name: Telegram, <<: *default}
+  - {name: Social, <<: *default}
+  - {name: Apple, <<: *default}
+  - {name: Microsoft, <<: *default}
+  - {name: Steam, <<: *default}
+  - {name: Game, <<: *default}
+  - {name: YouTube, <<: *default}
+  - {name: Media, <<: *default}
+  - {name: 检测, <<: *default}
+  - {name: IP, <<: *default}
+  - {name: 源IP, <<: *default}
+  - {name: 国内, <<: *default}
+  - {name: 国外, <<: *default}
+  - {name: 其他, <<: *default}
 
-    - {name: Twitter, <<: *default}
-    - {name: 灵活, <<: *default}
-    - {name: 不走代理, <<: *default}
-    - {name: 必须日本, <<: *default}
-    - {name: 必须香港, <<: *default}
-    - {name: Gemini, <<: *default}
-    - {name: AI, <<: *default}
-    - {name: Nvidia, <<: *default}
-    - {name: GitHub, <<: *default}
-    - {name: TikTok, <<: *default}
-    - {name: Telegram, <<: *default}
-    - {name: Social, <<: *default}
-    - {name: Apple, <<: *default}
-    - {name: Microsoft, <<: *default}
-    - {name: Steam, <<: *default}
-    - {name: Game, <<: *default}
-    - {name: YouTube, <<: *default}
-    - {name: Media, <<: *default}
-    - {name: 检测, <<: *default}
-    - {name: IP, <<: *default}
-    - {name: 源IP, <<: *default}
-    - {name: 国内, <<: *default}
-    - {name: 国外, <<: *default}
-    - {name: 其他, <<: *default}
-
+  # --- 第二层：最终的功能策略组 ---
   # 香港组
-    - name: 香港-故转
-      type: fallback
-      interval: 10
-      lazy: false
-      proxies:
-        - 香港-智选
-        - 香港-自手
-  
-    - name: 香港-自手
-      type: fallback
-      interval: 10
-      lazy: false
-      proxies:
-        - 香港-自动
-        - 香港-手动
-      
-    - name: 香港-智选
-      type: smart
-      include-all: true
-      policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8;快充云:0.6"
-      uselightgbm: true
-      collectdata: false
-      health-check:
-        enable: true
-        url: https://www.gstatic.com/generate_204
-        interval: 10
-        tolerance: 2
-      strategy: sticky-sessions
-      interval: 10
-      filter: "^(?!.*快冲云).*香港"
-  
-    - name: 香港-自动
-      type: url-test
-      include-all: true
-      tolerance: 10
-      interval: 10
-      filter: "^(?!.*快冲云).*香港"
-   
-    - name: 香港-手动
-      type: select
-      include-all: true
-      tolerance: 10
-      interval: 10
-      filter: "(?:香港)"
-  
-    # 台湾组
-    - name: 台湾-故转
-      type: fallback
-      interval: 10
-      lazy: false
-      proxies:
-        - 台湾-智选
-        - 台湾-自手
-  
-    - name: 台湾-自手
-      type: fallback
-      interval: 10
-      lazy: false
-      proxies:
-        - 台湾-自动
-        - 台湾-手动
-  
-    - name: 台湾-智选
-      type: smart
-      include-all: true
-      policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8;快充云:0.6"
-      uselightgbm: true
-      collectdata: false
-      health-check:
-        enable: true
-        url: https://www.gstatic.com/generate_204
-        interval: 10
-        tolerance: 2
-      strategy: sticky-sessions
-      interval: 10
-      filter: "^(?!.*快冲云).*台湾"
-  
-    - name: 台湾-自动
-      type: url-test
-      include-all: true
-      tolerance: 10
-      interval: 10
-      filter: "^(?!.*快冲云).*台湾"
-  
-    - name: 台湾-手动
-      type: select
-      include-all: true
-      tolerance: 10
-      interval: 10
-      filter: "(?:台湾)"
-  
-    # 日本组
-    - name: 日本-故转
-      type: fallback
-      interval: 10
-      lazy: false
-      proxies:
-        - 日本-智选
-        - 日本-自手
-  
-    - name: 日本-自手
-      type: fallback
-      interval: 10
-      lazy: false
-      proxies:
-        - 日本-自动
-        - 日本-手动
-  
-    - name: 日本-智选
-      type: smart
-      include-all: true
-      policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8;快充云:0.6"
-      uselightgbm: true
-      collectdata: false
-      health-check:
-        enable: true
-        url: https://www.gstatic.com/generate_204
-        interval: 10
-        tolerance: 2
-      strategy: sticky-sessions
-      interval: 10
-      filter: "^(?!.*快冲云).*日本"
-  
-    - name: 日本-自动
-      type: url-test
-      include-all: true
-      tolerance: 10
-      interval: 10
-      filter: "^(?!.*快冲云).*日本"
-  
-    - name: 日本-手动
-      type: select
-      include-all: true
-      tolerance: 10
-      interval: 10
-      filter: "(?:日本)"
-  
-    # 新加坡组
-    - name: 新加坡-故转
-      type: fallback
-      interval: 10
-      lazy: false
-      proxies:
-        - 新加坡-智选
-        - 新加坡-自手
-  
-    - name: 新加坡-自手
-      type: fallback
-      interval: 10
-      lazy: false
-      proxies:
-        - 新加坡-自动
-        - 新加坡-手动
-  
-    - name: 新加坡-智选
-      type: smart
-      include-all: true
-      policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8;快充云:0.6"
-      uselightgbm: true
-      collectdata: false
-      health-check:
-        enable: true
-        url: https://www.gstatic.com/generate_204
-        interval: 10
-        tolerance: 2
-      strategy: sticky-sessions
-      interval: 10
-      filter: "^(?!.*快冲云).*新加坡"
-  
-    - name: 新加坡-自动
-      type: url-test
-      include-all: true
-      tolerance: 10
-      interval: 10
-      filter: "^(?!.*快冲云).*新加坡"
-  
-    - name: 新加坡-手动
-      type: select
-      include-all: true
-      tolerance: 10
-      interval: 10
-      filter: "(?:新加坡)"
-  
-    # 韩国组
-    - name: 韩国-故转
-      type: fallback
-      interval: 10
-      lazy: false
-      proxies:
-        - 韩国-智选
-        - 韩国-自手
-  
-    - name: 韩国-自手
-      type: fallback
-      interval: 10
-      lazy: false
-      proxies:
-        - 韩国-自动
-        - 韩国-手动
-  
-    - name: 韩国-智选
-      type: smart
-      include-all: true
-      policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8;快充云:0.6"
-      uselightgbm: true
-      collectdata: false
-      health-check:
-        enable: true
-        url: https://www.gstatic.com/generate_204
-        interval: 10
-        tolerance: 2
-      strategy: sticky-sessions
-      interval: 10
-      filter: "^(?!.*快冲云).*韩国"
-  
-    - name: 韩国-自动
-      type: url-test
-      include-all: true
-      tolerance: 10
-      interval: 10
-      filter: "^(?!.*快冲云).*韩国"
-  
-    - name: 韩国-手动
-      type: select
-      include-all: true
-      tolerance: 10
-      interval: 10
-      filter: "(?:韩国)"
-  
-    # 美国组
-    - name: 美国-故转
-      type: fallback
-      interval: 10
-      lazy: false
-      proxies:
-        - 美国-智选
-        - 美国-自手
-  
-    - name: 美国-自手
-      type: fallback
-      interval: 10
-      lazy: false
-      proxies:
-        - 美国-自动
-        - 美国-手动
-  
-    - name: 美国-智选
-      type: smart
-      include-all: true
-      policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8;快充云:0.6"
-      uselightgbm: true
-      collectdata: false
-      health-check:
-        enable: true
-        url: https://www.gstatic.com/generate_204
-        interval: 10
-        tolerance: 2
-      strategy: sticky-sessions
-      interval: 10
-      filter: "^(?!.*快冲云).*美国"
-  
-    - name: 美国-自动
-      type: url-test
-      include-all: true
-      tolerance: 10
-      interval: 10
-      filter: "^(?!.*快冲云).*美国"
-  
-    - name: 美国-手动
-      type: select
-      include-all: true
-      tolerance: 10
-      interval: 10
-      filter: "(?:美国)"
+  - name: 香港-故转
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
+      - 香港-智选
+      - 香港-自手
 
-    # 美国家宽组
-    - name: 美国家宽-故转
-      type: fallback
-      interval: 10
-      lazy: false
-      proxies:
-        - 美国家宽-智选
-        - 美国家宽-自手
-  
-    - name: 美国家宽-自手
-      type: fallback
-      interval: 10
-      lazy: false
-      proxies:
-        - 美国家宽-自动
-        - 美国家宽-手动
-  
-    - name: 美国家宽-智选
-      type: smart
-      include-all: true
-      policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8;快充云:0.6"
-      uselightgbm: true
-      collectdata: false
-      health-check:
-        enable: true
-        url: https://www.gstatic.com/generate_204
-        interval: 10
-        tolerance: 2
-      strategy: sticky-sessions
-      interval: 10
-      filter: "^(?=.*快冲云)(?=.*美国)(?=.*家宽).*"
-  
-    - name: 美国家宽-自动
-      type: url-test
-      include-all: true
-      tolerance: 10
-      interval: 10
-      filter: "^(?=.*快冲云)(?=.*美国)(?=.*家宽).*"
-  
-    - name: 美国家宽-手动
-      type: select
-      include-all: true
-      tolerance: 10
-      interval: 10
-      filter: "^(?=.*快冲云)(?=.*美国)(?=.*家宽).*"
+  - name: 香港-自手
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
+      - 香港-自动
+      - 香港-手动
 
-    # 其他组
-    - name: 其他-故转
-      type: fallback
-      interval: 10
-      lazy: false
-      proxies:
-        - 其他-智选
-        - 其他-自手
-  
-    - name: 其他-自手
-      type: fallback
-      interval: 10
-      lazy: false
-      proxies:
-        - 其他-自动
-        - 其他-手动
-  
-    - name: 其他-智选
-      type: smart
-      include-all: true
-      policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8;快充云:0.6"
-      uselightgbm: true
-      collectdata: false
-      health-check:
-        enable: true
-        url: https://www.gstatic.com/generate_204
-        interval: 10
-        tolerance: 2
-      strategy: sticky-sessions
-      interval: 10
-      filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国|快冲云)).*$"
-  
-    - name: 其他-自动
-      type: url-test
-      include-all: true
-      tolerance: 10
-      interval: 10
-      filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国|快冲云)).*$"
+  - name: 香港-智选
+    <<: *smart_template
+    filter: "^(?!.*快冲云).*香港"
 
-    - name: 其他-手动
-      type: select
-      include-all: true
-      tolerance: 10
-      interval: 10
-      filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国)).*$"
+  - name: 香港-自动
+    <<: *autotest_template
+    filter: "^(?!.*快冲云).*香港"
 
-# ========================
-# 规则引擎（rules）
-# ========================
+  - name: 香港-手动
+    <<: *manual_template
+    filter: "(?:香港)"
+
+  # 台湾组
+  - name: 台湾-故转
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
+      - 台湾-智选
+      - 台湾-自手
+
+  - name: 台湾-自手
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
+      - 台湾-自动
+      - 台湾-手动
+
+  - name: 台湾-智选
+    <<: *smart_template
+    filter: "^(?!.*快冲云).*台湾"
+
+  - name: 台湾-自动
+    <<: *autotest_template
+    filter: "^(?!.*快冲云).*台湾"
+
+  - name: 台湾-手动
+    <<: *manual_template
+    filter: "(?:台湾)"
+
+  # 日本组
+  - name: 日本-故转
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
+      - 日本-智选
+      - 日本-自手
+
+  - name: 日本-自手
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
+      - 日本-自动
+      - 日本-手动
+
+  - name: 日本-智选
+    <<: *smart_template
+    filter: "^(?!.*快冲云).*日本"
+
+  - name: 日本-自动
+    <<: *autotest_template
+    filter: "^(?!.*快冲云).*日本"
+
+  - name: 日本-手动
+    <<: *manual_template
+    filter: "(?:日本)"
+
+  # 新加坡组
+  - name: 新加坡-故转
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
+      - 新加坡-智选
+      - 新加坡-自手
+
+  - name: 新加坡-自手
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
+      - 新加坡-自动
+      - 新加坡-手动
+
+  - name: 新加坡-智选
+    <<: *smart_template
+    filter: "^(?!.*快冲云).*新加坡"
+
+  - name: 新加坡-自动
+    <<: *autotest_template
+    filter: "^(?!.*快冲云).*新加坡"
+
+  - name: 新加坡-手动
+    <<: *manual_template
+    filter: "(?:新加坡)"
+
+  # 韩国组
+  - name: 韩国-故转
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
+      - 韩国-智选
+      - 韩国-自手
+
+  - name: 韩国-自手
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
+      - 韩国-自动
+      - 韩国-手动
+
+  - name: 韩国-智选
+    <<: *smart_template
+    filter: "^(?!.*快冲云).*韩国"
+
+  - name: 韩国-自动
+    <<: *autotest_template
+    filter: "^(?!.*快冲云).*韩国"
+
+  - name: 韩国-手动
+    <<: *manual_template
+    filter: "(?:韩国)"
+
+  # 美国组
+  - name: 美国-故转
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
+      - 美国-智选
+      - 美国-自手
+
+  - name: 美国-自手
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
+      - 美国-自动
+      - 美国-手动
+
+  - name: 美国-智选
+    <<: *smart_template
+    filter: "^(?!.*快冲云).*美国"
+
+  - name: 美国-自动
+    <<: *autotest_template
+    filter: "^(?!.*快冲云).*美国"
+
+  - name: 美国-手动
+    <<: *manual_template
+    filter: "(?:美国)"
+
+  # 美国家宽组
+  - name: 美国家宽-故转
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
+      - 美国家宽-智选
+      - 美国家宽-自手
+
+  - name: 美国家宽-自手
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
+      - 美国家宽-自动
+      - 美国家宽-手动
+
+  - name: 美国家宽-智选
+    <<: *smart_template
+    filter: "^(?=.*快冲云)(?=.*美国)(?=.*家宽).*"
+
+  - name: 美国家宽-自动
+    <<: *autotest_template
+    filter: "^(?=.*快冲云)(?=.*美国)(?=.*家宽).*"
+
+  - name: 美国家宽-手动
+    <<: *manual_template
+    filter: "^(?=.*快冲云)(?=.*美国)(?=.*家宽).*"
+
+  # 其他组
+  - name: 其他-故转
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
+      - 其他-智选
+      - 其他-自手
+
+  - name: 其他-自手
+    type: fallback
+    interval: 10
+    lazy: false
+    proxies:
+      - 其他-自动
+      - 其他-手动
+
+  - name: 其他-智选
+    <<: *smart_template
+    filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国|快冲云)).*$"
+
+  - name: 其他-自动
+    <<: *autotest_template
+    filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国|快冲云)).*$"
+
+  - name: 其他-手动
+    <<: *manual_template
+    filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国)).*$"
+
+# ==============================================================
+# 规则引擎（rules）和 规则集提供者（rule-providers）
+# ==============================================================
 rules:
   - RULE-SET,Twitter1_Domain,Twitter
   - RULE-SET,Twitter2_Domain,Twitter

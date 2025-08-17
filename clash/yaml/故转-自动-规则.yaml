@@ -107,6 +107,24 @@ profile:
   store-selected: true
   store-fake-ip: true
 
+# ================================================================
+# 策略组定义 (重构核心区域)
+# ================================================================
+
+# [重构] 定义二个可复用的策略组模板，用于生成各种地区组
+
+autotest_template: &autotest_template
+  type: url-test
+  include-all: true
+  tolerance: 10
+  interval: 10
+
+manual_template: &manual_template
+  type: select
+  include-all: true
+  tolerance: 10
+  interval: 10
+
 # ========================
 # 策略组定义
 # ========================
@@ -180,16 +198,11 @@ proxy-groups:
 
   - name: 香港-自动
     type: url-test
-    include-all: true
-    tolerance: 10
-    interval: 10
+    <<: *autotest_template
     filter: "^(?!.*快冲云).*香港"
 
   - name: 香港-手动
-    type: select
-    include-all: true
-    tolerance: 10
-    interval: 10
+    <<: *manual_template
     filter: "(?:香港)"
  
   # 台湾组
@@ -203,16 +216,11 @@ proxy-groups:
 
   - name: 台湾-自动
     type: url-test
-    include-all: true
-    tolerance: 10
-    interval: 10
+    <<: *autotest_template
     filter: "^(?!.*快冲云).*台湾"
 
   - name: 台湾-手动
-    type: select
-    include-all: true
-    tolerance: 10
-    interval: 10
+    <<: *manual_template
     filter: "(?:台湾)"
 
   # 日本组
@@ -226,16 +234,11 @@ proxy-groups:
 
   - name: 日本-自动
     type: url-test
-    include-all: true
-    tolerance: 10
-    interval: 10
+    <<: *autotest_template
     filter: "^(?!.*快冲云).*日本"
 
   - name: 日本-手动
-    type: select
-    include-all: true
-    tolerance: 10
-    interval: 10
+    <<: *manual_template
     filter: "(?:日本)"
 
   # 新加坡组
@@ -249,16 +252,11 @@ proxy-groups:
 
   - name: 新加坡-自动
     type: url-test
-    include-all: true
-    tolerance: 10
-    interval: 10
+    <<: *autotest_template
     filter: "^(?!.*快冲云).*新加坡"
 
   - name: 新加坡-手动
-    type: select
-    include-all: true
-    tolerance: 10
-    interval: 10
+    <<: *manual_template
     filter: "(?:新加坡)"
 
 
@@ -273,16 +271,11 @@ proxy-groups:
 
   - name: 韩国-自动
     type: url-test
-    include-all: true
-    tolerance: 10
-    interval: 10
+    <<: *autotest_template
     filter: "^(?!.*快冲云).*韩国"
 
   - name: 韩国-手动
-    type: select
-    include-all: true
-    tolerance: 10
-    interval: 10
+    <<: *manual_template
     filter: "(?:韩国)"
 
   # 美国组
@@ -295,17 +288,11 @@ proxy-groups:
       - 美国-手动
 
   - name: 美国-自动
-    type: url-test
-    include-all: true
-    tolerance: 10
-    interval: 10
+    <<: *autotest_template
     filter: "^(?!.*快冲云).*美国"
 
   - name: 美国-手动
-    type: select
-    include-all: true
-    tolerance: 10
-    interval: 10
+    <<: *manual_template
     filter: "(?:美国)"
 
   # 美国家宽组
@@ -318,17 +305,11 @@ proxy-groups:
       - 美国家宽-手动
 
   - name: 美国家宽-自动
-    type: url-test
-    include-all: true
-    tolerance: 10
-    interval: 10
+    <<: *autotest_template
     filter: "^(?=.*快冲云)(?=.*美国)(?=.*家宽).*"
 
   - name: 美国家宽-手动
-    type: select
-    include-all: true
-    tolerance: 10
-    interval: 10
+    <<: *manual_template
     filter: "^(?=.*快冲云)(?=.*美国)(?=.*家宽).*"
 
   # 其他组
@@ -341,17 +322,11 @@ proxy-groups:
       - 其他-手动
 
   - name: 其他-自动
-    type: url-test
-    include-all: true
-    tolerance: 10
-    interval: 10
+    <<: *autotest_template
     filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国|快冲云)).*$"
 
   - name: 其他-手动
-    type: select
-    include-all: true
-    tolerance: 10
-    interval: 10
+    <<: *manual_template
     filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国)).*$"
 
 # ========================
