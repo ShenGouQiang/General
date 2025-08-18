@@ -28,3 +28,25 @@
 4. 执行 docker build -t my-cherry-studio:latest . 进行构建
 5. 端口依然是3000
 6. cherry-studio的数据目录在/config/.config 目录下
+7. 启动命令
+```shell
+docker run -d \
+  --name=cherry-studio-cn \
+  -p 3000:3000 \
+  --user 0:0 \
+  --cap-add SYS_ADMIN \
+  --device /dev/fuse \
+  -e PUID=0 \
+  -e PGID=0 \
+  -e TZ=Asia/Shanghai \
+  -e WEBTOP_PRESET=high \
+  -e WEBTOP_SCREEN_RESOLUTION=3840x2160 \
+   -e SCALE_FACTOR=2 \
+    -e PASSWORD="cherry-studio" \
+  -v /root/cherry/config:/config \
+  -v /root/cherry/data:/data/projects \
+  --shm-size="1g" \
+  --restart unless-stopped \
+  my-cherry-studio:latest 
+
+```
