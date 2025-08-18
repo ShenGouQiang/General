@@ -33,7 +33,7 @@ ENV LANG=zh_CN.UTF-8 \
 
 # Step 5: Extract AppImage (Unchanged)
 WORKDIR /opt
-RUN wget -O /opt/Cherry-Studio-x86_64.AppImage https://file-cdn.gitcode.com/5007375/releases/untagger_2c9079045d904a96b24f96743d86549a/Cherry-Studio-1.5.6-x86_64.AppImage?auth_key=1755503094-93768c46235742d7aa82566c11accd82-0-5464ae067b62eb18b5c9ec7899095600af0e42976a6b4ca1382fa47497798961
+COPY Cherry-Studio-x86_64.AppImage .
 RUN \
     chmod +x Cherry-Studio-x86_64.AppImage && \
     ./Cherry-Studio-x86_64.AppImage --appimage-extract && \
