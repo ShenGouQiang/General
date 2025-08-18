@@ -10,7 +10,7 @@ formatted_time=$(date "+%Y-%m-%d %H:%M:%S")
 
 # 设定关键变量
 image_name="cherry-studio"
-dockerhub_user="shengouqiang"
+dockerhub_user="XXX"
 
 # 输出参数
 echo "Docker版本是: $docker_version"
