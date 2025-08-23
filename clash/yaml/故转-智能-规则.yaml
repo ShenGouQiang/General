@@ -119,7 +119,7 @@ profile:
 # [重构] 定义三个可复用的策略组模板，用于生成各种地区组
 smart_template: &smart_template
   type: smart
-  policy-priority: "小牛云:1.2;三月七:1.0;三分机场:0.8;快冲云:0.6"
+  policy-priority: "三月七:1.2;小牛云:0.9;三分机场:0.7;快冲云:0.5"
   include-all: true
   tolerance: 10
   interval: 10
