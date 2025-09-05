@@ -158,6 +158,9 @@ default: &default
     - 美国家宽-故转
     - 美国家宽-自动
     - 美国家宽-手动
+    - TikTok-故转
+    - TikTok-自动
+    - TikTok-手动
     - 其他-故转
     - 其他-自动
     - 其他-手动
@@ -302,6 +305,21 @@ proxy-groups:
   - name: 美国家宽-手动
     <<: *manual_template
     filter: "^(?=.*快冲云)(?=.*美国)(?=.*家宽).*"
+
+  # TikTok组
+  - name: TikTok-故转
+    <<: *fallback_template
+    proxies:
+      - TikTok-自动
+      - TikTok-手动
+
+  - name: TikTok-自动
+    <<: *autotest_template
+    filter: "(?=.*日本)(?=.*(原生|家宽|TikTok)).*"
+
+  - name: TikTok-手动
+    <<: *manual_template
+    filter: "(.*(日本|TikTok|原生|家宽)).*"
 
   # 其他组
   - name: 其他-故转
