@@ -51,6 +51,17 @@ proxy-providers:
       interval: 10
     proxy: 直连    
 
+
+  CloudFlare:
+    url: "http://192.168.123.241:3001/Jp8JmM1bQ4dqZBPHNYah/download/CF"
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 10
+    proxy: 直连    
+
 proxies:
   - {name: 直连, type: direct}
   - {name: 拒绝, type: reject}
@@ -198,6 +209,7 @@ default: &default
     - TikTok-智选
     - TikTok-自动
     - TikTok-手动
+    - CloudFlare
     - 直连
     - 拒绝
 
@@ -435,6 +447,10 @@ proxy-groups:
   - name: TikTok-手动
     <<: *manual_template
     filter: "(.*(日本|TikTok|原生|家宽)).*"
+
+  - name: CloudFlare
+    <<: *autotest_template
+    filter: "(?:CF_)"
 
   # 其他组
   - name: 其他-故转
