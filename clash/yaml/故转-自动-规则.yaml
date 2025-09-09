@@ -46,6 +46,16 @@ proxy-providers:
       interval: 10
     proxy: 直连    
 
+  CloudFlare:
+    url: "http://192.168.123.241:3001/Jp8JmM1bQ4dqZBPHNYah/download/CF"
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 10
+    proxy: 直连 
+
 proxies:
   - {name: 直连, type: direct}
   - {name: 拒绝, type: reject}
@@ -129,7 +139,7 @@ fallback_template: &fallback_template
   type: fallback
   interval: 10
   lazy: false
-
+ 
 # ========================
 # 策略组定义
 # ========================
@@ -164,6 +174,8 @@ default: &default
     - 其他-故转
     - 其他-自动
     - 其他-手动
+    - CloudFlare
+    - 默认
     - 拒绝
 
 proxy-groups:
@@ -194,6 +206,43 @@ proxy-groups:
   - {name: 国内, <<: *default}
   - {name: 国外, <<: *default}
   - {name: 其他, <<: *default}
+
+  # 默认
+  - name: 默认
+    type: select
+    tolerance: 10
+    interval: 10
+    proxies:
+      - 直连 
+      - 香港-故转
+      - 香港-自动
+      - 香港-手动
+      - 台湾-故转
+      - 台湾-自动
+      - 台湾-手动
+      - 日本-故转
+      - 日本-自动
+      - 日本-手动
+      - 新加坡-故转
+      - 新加坡-自动
+      - 新加坡-手动    
+      - 韩国-故转
+      - 韩国-自动
+      - 韩国-手动
+      - 美国-故转
+      - 美国-自动
+      - 美国-手动
+      - 美国家宽-故转
+      - 美国家宽-自动
+      - 美国家宽-手动
+      - TikTok-故转
+      - TikTok-自动
+      - TikTok-手动
+      - 其他-故转
+      - 其他-自动
+      - 其他-手动
+      - CloudFlare
+      - 拒绝
 
   # 香港组
   - name: 香港-故转
@@ -320,6 +369,10 @@ proxy-groups:
   - name: TikTok-手动
     <<: *manual_template
     filter: "(.*(日本|TikTok|原生|家宽)).*"
+
+  - name: CloudFlare
+    <<: *autotest_template
+    filter: "(?:CF_)"
 
   # 其他组
   - name: 其他-故转
