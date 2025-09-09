@@ -53,7 +53,7 @@ proxy-providers:
 
 
   CloudFlare:
-    url: "http://192.168.123.241:3001/Jp8JmM1bQ4dqZBPHNYah/download/CF"
+    url: "http://192.168.123.241:3001/Jp8JmM1bQ4dqZBPHNYah/download/collection/CF-ALL"
     type: http
     interval: 86400
     health-check:
