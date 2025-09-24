@@ -538,7 +538,6 @@ proxy-groups:
 # 规则引擎（rules）和 规则集提供者（rule-providers）
 # ==============================================================
 rules:
-  - RULE-SET,checker_Domain,检测
   - RULE-SET,Twitter1_Domain,Twitter
   - RULE-SET,Twitter2_Domain,Twitter
   - RULE-SET,flexible_Domain,灵活
@@ -574,6 +573,7 @@ rules:
   - RULE-SET,Netflix_Domain,Media
   - RULE-SET,HBO_Domain,Media
   - RULE-SET,Spotify_Domain,Media
+  - RULE-SET,checker_Domain,检测
   - RULE-SET,MyOwnIP_Domain,IP
   - RULE-SET,sourceIP_Domain,源IP
   - RULE-SET,MyOwnProxy_Domain,国外
@@ -603,7 +603,6 @@ rule-anchor:
   class: &class {type: http, interval: 86400, behavior: classical, format: text}
 
 rule-providers:
-  checker_Domain: {<<: *class, url: "https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Check.list"}
   Twitter1_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Twitter/Twitter.list"}
   Twitter2_Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/x.mrs"}
   flexible_Domain: {<<: *class, url: "https://raw.githubusercontent.com/ShenGouQiang/General/refs/heads/main/clash/rule/list/Flexible.list"}
@@ -639,6 +638,7 @@ rule-providers:
   Netflix_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix.list"}
   HBO_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/HBO/HBO.list"}
   Spotify_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.list"}
+  checker_Domain: {<<: *class, url: "https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Check.list"}
   MyOwnIP_Domain: {<<: *class, url: "https://raw.githubusercontent.com/ShenGouQiang/General/refs/heads/main/clash/rule/list/IpCidr.list"}
   sourceIP_Domain: {<<: *class, url: "https://raw.githubusercontent.com/ShenGouQiang/General/refs/heads/main/clash/rule/list/SrcIpCidr.list"}
   MyOwnProxy_Domain: {<<: *class, url: "https://raw.githubusercontent.com/ShenGouQiang/General/refs/heads/main/clash/rule/list/MyOwnProxy.list"}
