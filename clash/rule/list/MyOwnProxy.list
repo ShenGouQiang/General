@@ -40,7 +40,7 @@ DOMAIN-SUFFIX,themoviedb.org
 DOMAIN-SUFFIX,tmdb.org
 DOMAIN,doc.iminho.me
 DOMAIN-SUFFIX,iminho.me
-IP-CIDR,38.207.152.39/32
+#IP-CIDR,38.207.152.39/32
 DOMAIN,avjb.com
 DOMAIN-SUFFIX,avjb.com
 DOMAIN-SUFFIX,qbittorrent.org
