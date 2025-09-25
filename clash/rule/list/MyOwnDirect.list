@@ -5,12 +5,7 @@ DOMAIN,airdroid.com
 DOMAIN-SUFFIX,airdroid.com
 DOMAIN,airdroidhelp.zendesk.com
 DOMAIN-SUFFIX,airdroidhelp.zendesk.com
-DOMAIN,cdn12.11yun.live
-DOMAIN-SUFFIX,cdn12.11yun.live
-DOMAIN,cdn13.11yun.live
-DOMAIN-SUFFIX,cdn13.11yun.live
-DOMAIN,cdn10.11yun.live
-DOMAIN-SUFFIX,cdn10.11yun.live
+DOMAIN-SUFFIX,11yun.live
 DOMAIN,surrit.com
 DOMAIN-SUFFIX,surrit.com
 DOMAIN-SUFFIX,cdn2020.com
