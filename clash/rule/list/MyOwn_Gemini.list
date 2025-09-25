@@ -12,3 +12,4 @@ DOMAIN,makersuite.google.com:443
 DOMAIN-SUFFIX,makersuite.google.com
 DOMAIN,alkalimakersuite-pa.clients6.google.com
 DOMAIN-SUFFIX,alkalimakersuite-pa.clients6.google.com
+DOMAIN-SUFFIX,cloud.google.com
