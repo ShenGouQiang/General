@@ -12,55 +12,72 @@
 proxy-providers:
 
   小牛云:
-    url: "http://192.168.123.241:3001/Jp8JmM1bQ4dqZBPHNYah/download/xiaoniuyun.cc"
+    url: "XX"
     type: http
-    interval: 86400
+    interval: 10
+    add-prefix: "小牛 | "
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 10
-    proxy: 直连 
+    proxy: 检测 
     
   三月七:
-    url: "http://192.168.123.241:3001/Jp8JmM1bQ4dqZBPHNYah/download/syq.tw"
+    url: "XX"
     type: http
-    interval: 86400
+    interval: 10
+    add-prefix: "三月七 | "
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 10
-    proxy: 直连    
+    proxy: 检测    
 
   三分机场:
-    url: "http://192.168.123.241:3001/Jp8JmM1bQ4dqZBPHNYah/download/%E4%B8%89%E5%88%86%E6%9C%BA%E5%9C%BA.xyz"
+    url: "XX"
     type: http
-    interval: 86400
+    interval: 10
+    add-prefix: "三分 | "
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 10
-    proxy: 直连    
+    proxy: 检测    
 
   快冲云:
-    url: "http://192.168.123.241:3001/Jp8JmM1bQ4dqZBPHNYah/download/KuaiChongYun"
+    url: "XX"
     type: http
-    interval: 86400
+    interval: 10
+    add-prefix: "快冲 | "
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 10
-    proxy: 直连    
+    proxy: 检测    
 
 
-  CloudFlare:
-    url: "http://192.168.123.241:3001/Jp8JmM1bQ4dqZBPHNYah/download/collection/CF-ALL"
+  CloudFlare1:
+    url: "XX"
     type: http
-    interval: 86400
+    interval: 10
+    add-prefix: "CloudFlare1 | "
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 10
-    proxy: 直连    
+    proxy: 检测
+
+  CloudFlare2:
+    url: "XX"
+    type: http
+    interval: 10
+    add-prefix: "CloudFlare2 | "
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 10
+    proxy: 检测
+
 
 proxies:
   - {name: 直连, type: direct}
@@ -130,7 +147,7 @@ profile:
 # [重构] 定义三个可复用的策略组模板，用于生成各种地区组
 smart_template: &smart_template
   type: smart
-  policy-priority: "三月七:1.2;小牛云:0.9;三分机场:0.7;快冲云:0.5"
+  policy-priority: "三月七:1.2;小牛:0.9;三分:0.7;快冲:0.5"
   include-all: true
   tolerance: 10
   interval: 10
@@ -319,11 +336,11 @@ proxy-groups:
 
   - name: 香港-智选
     <<: *smart_template
-    filter: "^(?!.*快冲云).*香港"
+    filter: "^(?!.*快冲).*香港"
 
   - name: 香港-自动
     <<: *autotest_template
-    filter: "^(?!.*快冲云).*香港"
+    filter: "^(?!.*快冲).*香港"
 
   - name: 香港-手动
     <<: *manual_template
@@ -344,11 +361,11 @@ proxy-groups:
 
   - name: 台湾-智选
     <<: *smart_template
-    filter: "^(?!.*快冲云).*台湾"
+    filter: "^(?!.*快冲).*台湾"
 
   - name: 台湾-自动
     <<: *autotest_template
-    filter: "^(?!.*快冲云).*台湾"
+    filter: "^(?!.*快冲).*台湾"
 
   - name: 台湾-手动
     <<: *manual_template
@@ -369,11 +386,11 @@ proxy-groups:
 
   - name: 日本-智选
     <<: *smart_template
-    filter: "^(?!.*快冲云).*日本"
+    filter: "^(?!.*快冲).*日本"
 
   - name: 日本-自动
     <<: *autotest_template
-    filter: "^(?!.*快冲云).*日本"
+    filter: "^(?!.*快冲).*日本"
 
   - name: 日本-手动
     <<: *manual_template
@@ -394,11 +411,11 @@ proxy-groups:
 
   - name: 新加坡-智选
     <<: *smart_template
-    filter: "^(?!.*快冲云).*新加坡"
+    filter: "^(?!.*快冲).*新加坡"
 
   - name: 新加坡-自动
     <<: *autotest_template
-    filter: "^(?!.*快冲云).*新加坡"
+    filter: "^(?!.*快冲).*新加坡"
 
   - name: 新加坡-手动
     <<: *manual_template
@@ -419,11 +436,11 @@ proxy-groups:
 
   - name: 韩国-智选
     <<: *smart_template
-    filter: "^(?!.*快冲云).*韩国"
+    filter: "^(?!.*快冲).*韩国"
 
   - name: 韩国-自动
     <<: *autotest_template
-    filter: "^(?!.*快冲云).*韩国"
+    filter: "^(?!.*快冲).*韩国"
 
   - name: 韩国-手动
     <<: *manual_template
@@ -444,11 +461,11 @@ proxy-groups:
 
   - name: 美国-智选
     <<: *smart_template
-    filter: "^(?!.*快冲云).*美国"
+    filter: "^(?!.*快冲).*美国"
 
   - name: 美国-自动
     <<: *autotest_template
-    filter: "^(?!.*快冲云).*美国"
+    filter: "^(?!.*快冲).*美国"
 
   - name: 美国-手动
     <<: *manual_template
@@ -469,15 +486,15 @@ proxy-groups:
 
   - name: 美国家宽-智选
     <<: *smart_template
-    filter: "^(?=.*快冲云)(?=.*美国)(?=.*家宽).*"
+    filter: "^(?=.*快冲)(?=.*美国)(?=.*家宽).*"
 
   - name: 美国家宽-自动
     <<: *autotest_template
-    filter: "^(?=.*快冲云)(?=.*美国)(?=.*家宽).*"
+    filter: "^(?=.*快冲)(?=.*美国)(?=.*家宽).*"
 
   - name: 美国家宽-手动
     <<: *manual_template
-    filter: "^(?=.*快冲云)(?=.*美国)(?=.*家宽).*"
+    filter: "^(?=.*快冲)(?=.*美国)(?=.*家宽).*"
 
 
   # TikTok组
