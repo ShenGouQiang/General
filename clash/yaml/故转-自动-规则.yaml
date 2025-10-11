@@ -7,9 +7,9 @@
 proxy-providers:
 
   小牛云:
-    url: "http://192.168.123.241:3001/Jp8JmM1bQ4dqZBPHNYah/download/xiaoniuyun.cc"
+    url: "http://192.168.123.121/AirPort/xiao_niu.txt"
     type: http
-    interval: 86400
+    interval: 10
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
@@ -17,9 +17,9 @@ proxy-providers:
     proxy: 直连 
     
   三月七:
-    url: "http://192.168.123.241:3001/Jp8JmM1bQ4dqZBPHNYah/download/syq.tw"
+    url: "http://192.168.123.121/AirPort/san_yue_qi.txt"
     type: http
-    interval: 86400
+    interval: 10
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
@@ -27,9 +27,9 @@ proxy-providers:
     proxy: 直连    
 
   三分机场:
-    url: "http://192.168.123.241:3001/Jp8JmM1bQ4dqZBPHNYah/download/%E4%B8%89%E5%88%86%E6%9C%BA%E5%9C%BA.xyz"
+    url: "http://192.168.123.121/AirPort/san_fen.txt"
     type: http
-    interval: 86400
+    interval: 1800
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
@@ -37,9 +37,9 @@ proxy-providers:
     proxy: 直连    
 
   快冲云:
-    url: "http://192.168.123.241:3001/Jp8JmM1bQ4dqZBPHNYah/download/KuaiChongYun"
+    url: "http://192.168.123.121/AirPort/kuai_chong.txt"
     type: http
-    interval: 86400
+    interval: 10
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
@@ -47,15 +47,25 @@ proxy-providers:
     proxy: 直连    
 
 
-  CloudFlare:
-    url: "http://192.168.123.241:3001/Jp8JmM1bQ4dqZBPHNYah/download/collection/CF-ALL"
+  CloudFlare1:
+    url: "http://192.168.123.121/AirPort/cf1.txt"
     type: http
-    interval: 86400
+    interval: 10
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 10
-    proxy: 直连    
+    proxy: 直连
+
+  CloudFlare2:
+    url: "http://192.168.123.121/AirPort/cf2.txt"
+    type: http
+    interval: 10
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 10
+    proxy: 直连
 
 proxies:
   - {name: 直连, type: direct}
@@ -255,7 +265,7 @@ proxy-groups:
   - name: 香港-自动
     type: url-test
     <<: *autotest_template
-    filter: "^(?!.*快冲云).*香港"
+    filter: "^(?!.*快冲).*香港"
 
   - name: 香港-手动
     <<: *manual_template
@@ -271,7 +281,7 @@ proxy-groups:
   - name: 台湾-自动
     type: url-test
     <<: *autotest_template
-    filter: "^(?!.*快冲云).*台湾"
+    filter: "^(?!.*快冲).*台湾"
 
   - name: 台湾-手动
     <<: *manual_template
@@ -287,7 +297,7 @@ proxy-groups:
   - name: 日本-自动
     type: url-test
     <<: *autotest_template
-    filter: "^(?!.*快冲云).*日本"
+    filter: "^(?!.*快冲).*日本"
 
   - name: 日本-手动
     <<: *manual_template
@@ -303,7 +313,7 @@ proxy-groups:
   - name: 新加坡-自动
     type: url-test
     <<: *autotest_template
-    filter: "^(?!.*快冲云).*新加坡"
+    filter: "^(?!.*快冲).*新加坡"
 
   - name: 新加坡-手动
     <<: *manual_template
@@ -320,7 +330,7 @@ proxy-groups:
   - name: 韩国-自动
     type: url-test
     <<: *autotest_template
-    filter: "^(?!.*快冲云).*韩国"
+    filter: "^(?!.*快冲).*韩国"
 
   - name: 韩国-手动
     <<: *manual_template
@@ -335,7 +345,7 @@ proxy-groups:
 
   - name: 美国-自动
     <<: *autotest_template
-    filter: "^(?!.*快冲云).*美国"
+    filter: "^(?!.*快冲).*美国"
 
   - name: 美国-手动
     <<: *manual_template
@@ -350,11 +360,11 @@ proxy-groups:
 
   - name: 美国家宽-自动
     <<: *autotest_template
-    filter: "^(?=.*快冲云)(?=.*美国)(?=.*家宽).*"
+    filter: "^(?=.*美国)(?=.*(家宽|原生|ISP)).*"
 
   - name: 美国家宽-手动
     <<: *manual_template
-    filter: "^(?=.*快冲云)(?=.*美国)(?=.*家宽).*"
+    filter: "^(?=.*美国)(?=.*(家宽|原生|ISP)).*"
 
   # TikTok组
   - name: TikTok-故转
@@ -373,7 +383,7 @@ proxy-groups:
 
   - name: CloudFlare
     <<: *autotest_template
-    filter: "(?:CF_)"
+    filter: "(?=.*(CF_)).*"
 
   # 其他组
   - name: 其他-故转
@@ -384,11 +394,11 @@ proxy-groups:
 
   - name: 其他-自动
     <<: *autotest_template
-    filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国|快冲云)).*$"
+    filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国|快冲|CF_)).*$"
 
   - name: 其他-手动
     <<: *manual_template
-    filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国)).*$"
+    filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国|CF_)).*$"
 
 # ========================
 # 规则引擎（rules）

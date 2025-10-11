@@ -12,71 +12,65 @@
 proxy-providers:
 
   小牛云:
-    url: "XX"
+    url: "http://192.168.123.121/AirPort/xiao_niu.txt"
     type: http
     interval: 10
-    add-prefix: "小牛 | "
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 10
-    proxy: 检测 
+    proxy: 直连 
     
   三月七:
-    url: "XX"
+    url: "http://192.168.123.121/AirPort/san_yue_qi.txt"
     type: http
     interval: 10
-    add-prefix: "三月七 | "
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 10
-    proxy: 检测    
+    proxy: 直连    
 
   三分机场:
-    url: "XX"
+    url: "http://192.168.123.121/AirPort/san_fen.txt"
     type: http
-    interval: 10
-    add-prefix: "三分 | "
+    interval: 1800
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 10
-    proxy: 检测    
+    proxy: 直连    
 
   快冲云:
-    url: "XX"
+    url: "http://192.168.123.121/AirPort/kuai_chong.txt"
     type: http
     interval: 10
-    add-prefix: "快冲 | "
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 10
-    proxy: 检测    
+    proxy: 直连    
 
 
   CloudFlare1:
-    url: "XX"
+    url: "http://192.168.123.121/AirPort/cf1.txt"
     type: http
     interval: 10
-    add-prefix: "CloudFlare1 | "
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 10
-    proxy: 检测
+    proxy: 直连
 
   CloudFlare2:
-    url: "XX"
+    url: "http://192.168.123.121/AirPort/cf2.txt"
     type: http
     interval: 10
-    add-prefix: "CloudFlare2 | "
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 10
-    proxy: 检测
+    proxy: 直连
 
 
 proxies:
@@ -486,15 +480,15 @@ proxy-groups:
 
   - name: 美国家宽-智选
     <<: *smart_template
-    filter: "^(?=.*美国)(?=.*家宽).*"
+    filter: "^(?=.*美国)(?=.*(家宽|原生|ISP)).*"
 
   - name: 美国家宽-自动
     <<: *autotest_template
-    filter: "^(?=.*美国)(?=.*家宽).*"
+    filter: "^(?=.*美国)(?=.*(家宽|原生|ISP)).*"
 
   - name: 美国家宽-手动
     <<: *manual_template
-    filter: "^(?=.*美国)(?=.*家宽).*"
+    filter: "^(?=.*美国)(?=.*(家宽|原生|ISP)).*"
 
 
   # TikTok组
@@ -524,7 +518,7 @@ proxy-groups:
 
   - name: CloudFlare
     <<: *autotest_template
-    filter: "(?:CF_)"
+    filter: "(?=.*(CF_)).*"
 
   # 其他组
   - name: 其他-故转
@@ -541,15 +535,15 @@ proxy-groups:
 
   - name: 其他-智选
     <<: *smart_template
-    filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国|快冲云)).*$"
+    filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国|快冲|CF_)).*$"
 
   - name: 其他-自动
     <<: *autotest_template
-    filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国|快冲云)).*$"
+    filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国|快冲|CF_)).*$"
 
   - name: 其他-手动
     <<: *manual_template
-    filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国)).*$"
+    filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国|CF_)).*$"
 
 # ==============================================================
 # 规则引擎（rules）和 规则集提供者（rule-providers）
