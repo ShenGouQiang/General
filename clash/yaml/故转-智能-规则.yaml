@@ -12,64 +12,64 @@
 proxy-providers:
 
   小牛云:
-    url: "http://192.168.123.121/AirPort/xiao_niu.txt"
+    url: "http://192.168.123.121/clash/airport/xiao_niu.txt"
     type: http
-    interval: 10
+    interval: 60
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
-      interval: 10
+      interval: 60
     proxy: 直连 
     
   三月七:
-    url: "http://192.168.123.121/AirPort/san_yue_qi.txt"
+    url: "http://192.168.123.121/clash/airport/san_yue_qi.txt"
     type: http
-    interval: 10
+    interval: 60
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
-      interval: 10
+      interval: 60
     proxy: 直连    
 
   三分机场:
-    url: "http://192.168.123.121/AirPort/san_fen.txt"
+    url: "http://192.168.123.121/clash/airport/san_fen.txt"
     type: http
-    interval: 1800
+    interval: 60
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
-      interval: 10
+      interval: 60
     proxy: 直连    
 
   快冲云:
-    url: "http://192.168.123.121/AirPort/kuai_chong.txt"
+    url: "http://192.168.123.121/clash/airport/kuai_chong.txt"
     type: http
-    interval: 10
+    interval: 60
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
-      interval: 10
+      interval: 60
     proxy: 直连    
 
 
   CloudFlare1:
-    url: "http://192.168.123.121/AirPort/cf1.txt"
+    url: "http://192.168.123.121/clash/airport/cf1.txt"
     type: http
-    interval: 10
+    interval: 60
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
-      interval: 10
+      interval: 60
     proxy: 直连
 
   CloudFlare2:
-    url: "http://192.168.123.121/AirPort/cf2.txt"
+    url: "http://192.168.123.121/clash/airport/cf2.txt"
     type: http
-    interval: 10
+    interval: 60
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
-      interval: 10
+      interval: 60
     proxy: 直连
 
 
