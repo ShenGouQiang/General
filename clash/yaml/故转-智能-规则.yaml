@@ -506,15 +506,15 @@ proxy-groups:
 
   - name: TikTok-智选
     <<: *smart_template
-    filter: "(?=.*日本)(?=.*(原生|家宽|TikTok)).*"
+    filter: "(?=.*日本)(?=.*(原生|家宽)).*"
 
   - name: TikTok-自动
     <<: *autotest_template
-    filter: "(?=.*日本)(?=.*(原生|家宽|TikTok)).*"
+    filter: "(?=.*日本)(?=.*(原生|家宽)).*"
 
   - name: TikTok-手动
     <<: *manual_template
-    filter: "(.*(日本|TikTok|原生|家宽)).*"
+    filter: "(.*(原生|家宽)).*"
 
   - name: CloudFlare
     <<: *autotest_template
