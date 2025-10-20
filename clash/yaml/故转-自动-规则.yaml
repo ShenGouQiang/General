@@ -9,7 +9,7 @@ proxy-providers:
   小牛云:
     url: "http://192.168.123.121/clash/airport/xiao_niu.txt"
     type: http
-    interval: 60
+    interval: 21600
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
@@ -19,7 +19,7 @@ proxy-providers:
   三月七:
     url: "http://192.168.123.121/clash/airport/san_yue_qi.txt"
     type: http
-    interval: 60
+    interval: 21600
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
@@ -29,7 +29,7 @@ proxy-providers:
   三分机场:
     url: "http://192.168.123.121/clash/airport/san_fen.txt"
     type: http
-    interval: 60
+    interval: 21600
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
@@ -39,7 +39,7 @@ proxy-providers:
   快冲云:
     url: "http://192.168.123.121/clash/airport/kuai_chong.txt"
     type: http
-    interval: 60
+    interval: 21600
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
@@ -50,7 +50,7 @@ proxy-providers:
   CloudFlare1:
     url: "http://192.168.123.121/clash/airport/cf1.txt"
     type: http
-    interval: 60
+    interval: 21600
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
@@ -60,7 +60,7 @@ proxy-providers:
   CloudFlare2:
     url: "http://192.168.123.121/clash/airport/cf2.txt"
     type: http
-    interval: 60
+    interval: 21600
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
