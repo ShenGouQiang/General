@@ -221,6 +221,7 @@ default: &default
     - TikTok-自动
     - TikTok-手动
     - CloudFlare
+    - Paypal
     - 默认
     - 直连
     - 拒绝
@@ -238,6 +239,7 @@ proxy-groups:
   - {name: 不走代理, <<: *default}
   - {name: 必须日本, <<: *default}
   - {name: 必须香港, <<: *default}
+  - {name: Paypal, <<: *default}
   - {name: Gemini, <<: *default}
   - {name: AI, <<: *default}
   - {name: Nvidia, <<: *default}
@@ -312,6 +314,7 @@ proxy-groups:
       - TikTok-自动
       - TikTok-手动
       - CloudFlare
+      - Paypal
       - 直连
       - 拒绝
 
@@ -520,6 +523,10 @@ proxy-groups:
     <<: *autotest_template
     filter: "(?=.*(CF_)).*"
 
+  - name: Paypal
+    <<: *autotest_template
+    filter: "^(?=.*美国)(?=.*(家宽|原生|ISP)).*"
+
   # 其他组
   - name: 其他-故转
     <<: *fallback_template
@@ -549,6 +556,7 @@ proxy-groups:
 # 规则引擎（rules）和 规则集提供者（rule-providers）
 # ==============================================================
 rules:
+  - RULE-SET,Pay_Pal,Paypal
   - RULE-SET,Twitter1_Domain,Twitter
   - RULE-SET,Twitter2_Domain,Twitter
   - RULE-SET,direct_Domain,不走代理
@@ -633,6 +641,7 @@ rule-providers:
   Telegram2_Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/telegram.mrs"}  
   Social_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Facebook/Facebook.list"}
   Apple_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple.list"}
+  Pay_Pal: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/PayPal/PayPal.yaml"}
   Microsoft_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.list"}
   Steam_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Steam/Steam.list"}
   Epic_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Epic/Epic.list"}
