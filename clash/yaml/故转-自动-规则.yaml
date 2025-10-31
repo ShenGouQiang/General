@@ -384,7 +384,7 @@ proxy-groups:
 
   - name: CloudFlare
     <<: *autotest_template
-    filter: "(?=.*(CF_)).*"
+    filter: "(?=.*(CF |)).*"
 
   # 其他组
   - name: 其他-故转
