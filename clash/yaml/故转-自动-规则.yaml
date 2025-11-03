@@ -179,6 +179,9 @@ default: &default
     - 美国家宽-故转
     - 美国家宽-自动
     - 美国家宽-手动
+    - 英国-故转
+    - 英国-自动
+    - 英国-手动
     - TikTok-故转
     - TikTok-自动
     - TikTok-手动
@@ -247,6 +250,9 @@ proxy-groups:
       - 美国家宽-故转
       - 美国家宽-自动
       - 美国家宽-手动
+      - 英国-故转
+      - 英国-自动
+      - 英国-手动
       - TikTok-故转
       - TikTok-自动
       - TikTok-手动
@@ -366,6 +372,21 @@ proxy-groups:
   - name: 美国家宽-手动
     <<: *manual_template
     filter: "^(?=.*美国)(?=.*(家宽|原生|ISP)).*"
+
+  # 英国组
+  - name: 英国-故转
+    <<: *fallback_template
+    proxies:
+      - 英国-自动
+      - 英国-手动
+
+  - name: 英国-自动
+    <<: *autotest_template
+    filter: "(?:英国)"
+
+  - name: 英国-手动
+    <<: *manual_template
+    filter: "(?:英国)"
 
   # TikTok组
   - name: TikTok-故转
