@@ -175,6 +175,7 @@ fallback_template: &fallback_template
 default: &default
   type: select 
   proxies: 
+    - 默认
     - 香港-故转
     - 香港-自手
     - 香港-智选
@@ -226,7 +227,6 @@ default: &default
     - TikTok-自动
     - TikTok-手动
     - CloudFlare
-    - 默认
     - 直连
     - 拒绝
 
