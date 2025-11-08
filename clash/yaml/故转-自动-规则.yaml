@@ -435,7 +435,8 @@ rules:
   - RULE-SET,Netflix_Domain,Media
   - RULE-SET,HBO_Domain,Media
   - RULE-SET,Spotify_Domain,Media
-  - RULE-SET,checker_Domain,检测
+  - RULE-SET,checker1_Domain,检测
+  - RULE-SET,checker2_Domain,检测
   - RULE-SET,MyOwnIP_Domain,IP
   - RULE-SET,sourceIP_Domain,源IP
   - RULE-SET,MyOwnProxy_Domain,国外
@@ -501,7 +502,8 @@ rule-providers:
   Netflix_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix.list"}
   HBO_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBO/HBO.list"}
   Spotify_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.list"}
-  checker_Domain: {<<: *class, url: "https://raw.githubusercontent.com/liandu2024/clash/main/list/Check.list"}
+  checker1_Domain: {<<: *class, url: "https://raw.githubusercontent.com/ShenGouQiang/General/main/clash/rule/list/NetWorkChecker.list"}
+  checker2_Domain: {<<: *class, url: "https://raw.githubusercontent.com/liandu2024/clash/main/list/Check.list"}
   MyOwnIP_Domain: {<<: *class, url: "https://raw.githubusercontent.com/ShenGouQiang/General/main/clash/rule/list/IpCidr.list"}
   sourceIP_Domain: {<<: *class, url: "https://raw.githubusercontent.com/ShenGouQiang/General/main/clash/rule/list/SrcIpCidr.list"}
   MyOwnProxy_Domain: {<<: *class, url: "https://raw.githubusercontent.com/ShenGouQiang/General/main/clash/rule/list/MyOwnProxy.list"}
