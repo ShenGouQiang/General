@@ -46,27 +46,6 @@ proxy-providers:
       interval: 60
     proxy: 直连    
 
-
-  CloudFlare1:
-    url: "http://192.168.123.121/clash/airport/cf1.txt"
-    type: http
-    interval: 21600
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 60
-    proxy: 直连
-
-  CloudFlare2:
-    url: "http://192.168.123.121/clash/airport/cf2.txt"
-    type: http
-    interval: 21600
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 60
-    proxy: 直连
-
 proxies:
   - {name: 直连, type: direct}
   - {name: 拒绝, type: reject}
@@ -188,7 +167,6 @@ default: &default
     - 其他-故转
     - 其他-自动
     - 其他-手动
-    - CloudFlare
     - 直连 
     - 拒绝
 
@@ -259,7 +237,6 @@ proxy-groups:
       - 其他-故转
       - 其他-自动
       - 其他-手动
-      - CloudFlare
       - 拒绝
 
   # 香港组
@@ -403,10 +380,6 @@ proxy-groups:
     <<: *manual_template
     filter: "(.*(原生|家宽)).*"
 
-  - name: CloudFlare
-    <<: *autotest_template
-    filter: "(?=.*(CF_)).*"
-
   # 其他组
   - name: 其他-故转
     <<: *fallback_template
@@ -416,11 +389,11 @@ proxy-groups:
 
   - name: 其他-自动
     <<: *autotest_template
-    filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国|快冲|CF_)).*$"
+    filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国|快冲)).*$"
 
   - name: 其他-手动
     <<: *manual_template
-    filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国|CF_)).*$"
+    filter: "^(?!.*(直连|拒绝|香港|台湾|日本|新加坡|韩国|美国)).*$"
 
 # ========================
 # 规则引擎（rules）
