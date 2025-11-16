@@ -399,6 +399,7 @@ proxy-groups:
 # 规则引擎（rules）
 # ========================
 rules:
+  - RULE-SET,PT_IP,国内
   - RULE-SET,Pay_Pal,PayPal
   - RULE-SET,Twitter1_Domain,Twitter
   - RULE-SET,Twitter2_Domain,Twitter
@@ -455,7 +456,6 @@ rules:
   - RULE-SET,China1_Domain,国内
   - RULE-SET,China2_Domain,国内
   - RULE-SET,China3_IP,国内
-  - RULE-SET,PT_IP,国内
   - MATCH,其他
 
 # ========================
