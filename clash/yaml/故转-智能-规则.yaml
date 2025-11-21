@@ -72,7 +72,7 @@ log-level: error
 external-controller: 0.0.0.0:9090
 external-ui: ui
 external-ui-name: zashboard
-external-ui-url: https://gh-proxy.com/github.com/Zephyruso/zashboard/archive/gh-pages.zip
+external-ui-url: https://github.com/Zephyruso/zashboard/archive/gh-pages.zip
 secret: "Dandan19960813.1!"
 
 # ========================
@@ -630,22 +630,22 @@ rule-anchor:
 rule-providers:
   Pay_Pal: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PayPal/PayPal.list"}
   Twitter1_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Twitter/Twitter.list"}
-  Twitter2_Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/meta/geo/geosite/x.mrs"}
+  Twitter2_Domain: {<<: *domain, url: "https://github.com/metacubex/meta-rules-dat/raw/meta/geo/geosite/x.mrs"}
   direct_Domain: {<<: *class, url: "https://raw.githubusercontent.com/ShenGouQiang/General/main/clash/rule/list/MyOwnDirect.list"}
   mustJapan_Domain: {<<: *class, url: "https://raw.githubusercontent.com/ShenGouQiang/General/main/clash/rule/list/MustJapan.list"}
   mustHongKong_Domain: {<<: *class, url: "https://raw.githubusercontent.com/ShenGouQiang/General/main/clash/rule/list/MustHongKong.list"}
   MyOwn_Gemini_Domain: {<<: *class, url: "https://raw.githubusercontent.com/ShenGouQiang/General/main/clash/rule/list/MyOwn_Gemini.list"}
-  Gemini_Domain: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/liandu2024/clash/main/list/Gemini.list"}
+  Gemini_Domain: {<<: *class, url: "https://raw.githubusercontent.com/liandu2024/clash/main/list/Gemini.list"}
   ai_Domain: {<<: *class, url: "https://raw.githubusercontent.com/liandu2024/clash/main/list/AI.list"}
   MetaAi_Domain: {<<: *class, url: "https://raw.githubusercontent.com/liandu2024/clash/main/list/MetaAi.list"}
   Perplexity_Domain: {<<: *class, url: "https://raw.githubusercontent.com/liandu2024/clash/main/list/Perplexity.list"}
-  Nvidia_Domain: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Nvidia/Nvidia.list"}
-  ChatGPT_Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/meta/geo/geosite/openai.mrs"}
-  GitHub1_Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/meta/geo/geosite/github.mrs"}
+  Nvidia_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Nvidia/Nvidia.list"}
+  ChatGPT_Domain: {<<: *domain, url: "https://github.com/metacubex/meta-rules-dat/raw/meta/geo/geosite/openai.mrs"}
+  GitHub1_Domain: {<<: *domain, url: "https://github.com/metacubex/meta-rules-dat/raw/meta/geo/geosite/github.mrs"}
   GitHub2_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GitHub/GitHub.list"}
   TikTok_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TikTok/TikTok.list"}
   Telegram1_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.list"}
-  Telegram2_Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/meta/geo/geosite/telegram.mrs"}  
+  Telegram2_Domain: {<<: *domain, url: "https://github.com/metacubex/meta-rules-dat/raw/meta/geo/geosite/telegram.mrs"}  
   Social_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Facebook/Facebook.list"}
   Apple_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple.list"}
   Microsoft_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.list"}
@@ -658,7 +658,7 @@ rule-providers:
   Nintendo_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Nintendo/Nintendo.list"}
   YouTube1_Domain: {<<: *class, url: "https://raw.githubusercontent.com/liandu2024/clash/main/list/YouTube.list"}
   YouTube2_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.list"}
-  YouTube3_Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/meta/geo/geosite/youtube.mrs"}  
+  YouTube3_Domain: {<<: *domain, url: "https://github.com/metacubex/meta-rules-dat/raw/meta/geo/geosite/youtube.mrs"}  
   Disney_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Disney/Disney.list"}
   Netflix_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix.list"}
   HBO_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBO/HBO.list"}
@@ -675,13 +675,13 @@ rule-providers:
   xnb_Domain: {<<: *class, url: "https://raw.githubusercontent.com/liandu2024/clash/main/list/xnb.list"}
   Proxy1_Domain: {<<: *class, url: "https://raw.githubusercontent.com/liandu2024/clash/main/list/Proxy.list"}
   Global1_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Global/Global.list"}
-  Google2_Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/meta/geo/geosite/google.mrs"}  
-  Google3_IP: {<<: *ip, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/meta/geo/geoip/google.mrs"}
+  Google2_Domain: {<<: *domain, url: "https://github.com/metacubex/meta-rules-dat/raw/meta/geo/geosite/google.mrs"}  
+  Google3_IP: {<<: *ip, url: "https://github.com/metacubex/meta-rules-dat/raw/meta/geo/geoip/google.mrs"}
   flexible_Domain: {<<: *class, url: "https://raw.githubusercontent.com/ShenGouQiang/General/main/clash/rule/list/Flexible.list"}
   MyOwnDirect_Domain: {<<: *class, url: "https://raw.githubusercontent.com/ShenGouQiang/General/main/clash/rule/list/MyOwnDirect.list"}
   Direct1_Domain: {<<: *class, url: "https://raw.githubusercontent.com/liandu2024/clash/main/list/Direct.list"}
   ChinaMax_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax.list"}
   China1_Domain: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/China/China.list"}
-  China2_Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/meta/geo/geosite/cn.mrs"}
-  China3_IP: {<<: *ip, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/meta/geo/geoip/cn.mrs"}
+  China2_Domain: {<<: *domain, url: "https://github.com/metacubex/meta-rules-dat/raw/meta/geo/geosite/cn.mrs"}
+  China3_IP: {<<: *ip, url: "https://github.com/metacubex/meta-rules-dat/raw/meta/geo/geoip/cn.mrs"}
   PT_IP: {<<: *class, url: "https://raw.githubusercontent.com/ShenGouQiang/General/main/clash/rule/list/pt.list"}
